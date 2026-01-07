@@ -1,4 +1,4 @@
-const asyncHandler = require("express-async-handler");
+const asyncHandler = require("express-async-handler");   // express-async-handler is a utility middleware used in Express.js applications to handle errors in async/await route handlers automatically, without writing repetitive try–catch blocks.
 const Contact = require("../model/contactModel.js")
 //@desc get all contacts
 //@route Get /api/contacts/

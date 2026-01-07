@@ -36,3 +36,17 @@ const errorHandler = (err, req, res, next) => {
 };
 
 module.exports = errorHandler;
+
+
+// 
+
+// asyncHandler catches the rejected Promise that contains the Error object.
+// Error represents failure. asyncHandler detects it. Express routes it. errorHandler responds.
+// The Error class only creates and throws an error object. The forwarding to Express happens when asyncHandler 
+// catches the rejected promise and calls next(error), which then triggers the global error-handling middleware.
+// An async function always returns a Promise. So when you throw inside an async function: throw new Error("Failure");
+// JavaScript automatically converts this into: return Promise.reject(new Error("Failure"));
+// The rejection value is the Error object
+
+// Complete flow in one line
+// new Error() creates an Error object → throw rejects the async function’s Promise with that same object → asyncHandler catches the rejected Promise → calls next(error) with the same object → Express passes that same object to errorHandler(err, req, res, next)
