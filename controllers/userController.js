@@ -60,8 +60,10 @@ const loginUser = asyncHandler(async(req, res) => {
         process.env.ACCESS_TOKEN_SECRET,
         {expiresIn: "15m"}
     )
-        res.status(200).json({ accessToken })
-    }else {
+        res.status(200).cookie("accessToken", accessToken)
+        .json({"Message": "Login Successfull"} );
+    }
+        else {
         res.status(401);
         throw new Error("email or password is not valid")
     }

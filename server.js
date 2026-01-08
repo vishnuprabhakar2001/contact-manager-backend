@@ -1,4 +1,5 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const errorHandler = require("./middleware/errorHandler.js");
 const connectDb = require("./dbConnection.js");
 const dotenv = require("dotenv").config();
@@ -9,6 +10,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(express.json())  // This middleware help us to get the JSON Data from client.
+app.use(cookieParser())
 app.use("/api/contacts", require("./routes/contactRoutes"))
 app.use("/api/users", require("./routes/userRoutes"))
 
